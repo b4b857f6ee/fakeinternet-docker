@@ -1,0 +1,165 @@
+* {
+	box-sizing: border-box;
+	font-family: arial;
+}
+
+body {
+	margin: 0;
+}
+
+.r {
+	display: flex;
+	align-items: center;
+}
+
+.c {
+	flex: 1;
+	margin: 5px;
+	padding: 0px;
+	color: #fff;
+}
+
+header {
+	height: auto;
+	background: linear-gradient( #3E578C, #405FA2, #284E9E, #4266B1);
+	display: block;
+	width: auto;
+}
+
+header p {
+	font-size: 30px;
+	font-weight: 900;
+	margin: 0px auto;
+	text-align: center;
+}
+
+header #pword {
+	text-decoration: none;
+	color: #ccc;
+	font-size: 13px;
+}
+
+header #pword:hover {
+	text-decoration: underline;
+}
+
+header #login {
+	background: #4267B2;
+	color: #fff;
+	padding: 3px 8px;
+	text-decoration: none;
+	margin-left: 0;
+	border: 1px solid #29487D;
+}
+
+header #login:hover {
+	background: #365899;
+}
+
+header span {
+	font-size: 12px;
+	color: #ccc;
+}
+
+main {
+	background: linear-gradient(#dfe1e6, #e7e8ec, #d4d8e4, #c7cdde, #bec6dc)
+}
+
+main p {
+	color: #0E385F;
+}
+
+main #pcent {
+	text-align: center;
+	margin-left: 10%;
+}
+
+main #pcent p {
+	font-size: 30px;
+	margin-top: 10px;
+}
+
+main #main-heading {
+	font-size: 35px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+main #sub-heading {
+	font-size: 20px;
+}
+
+main .input-text {
+	line-height: 30px;
+	border-radius: 4px;
+	border: 1px solid grey;
+	padding: 3px 10px;
+	width: 100px;
+}
+
+main label {
+	color: #000;
+}
+
+main #surname {
+	margin-left: 20px;
+}
+
+main > .r {
+	align-items: stretch;
+}
+
+
+main #firstname {
+	width: 200px;
+}
+
+main #surname {
+	width: 200px;
+}
+
+main #email {
+	width: 420px;
+}
+main #renter {
+	width: 420px;
+}
+
+main #pword {
+	width: 420px;
+}
+
+main #birth {
+	padding-left: 10px;
+}
+
+.big-btn a {
+	padding: 15px 30px;
+	background: linear-gradient(#187318, #176117, #165816, #124a12);
+	width: 200px;
+	text-decoration: none;
+	border-radius: 6px;
+	color: #fff;
+	border: 1px solid #000;
+}
+
+@media (max-width: 1091px){
+	.r {
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+	header {
+		visibility: hidden;
+	}
+	main {
+		margin-top: -230px;
+	}
+	img , input {
+		overflow-x: hidden;
+	}
+	main {
+		margin: 0 auto;
+		margin-top: -230px;
+		max-width: 1024px;
+	}
+}

@@ -1,0 +1,66 @@
+html { box-sizing: border-box; font-size: 10px; }
+*,*:before,*:after { box-sizing: inherit; position: relative; tap-highlight-color: rgba(0,0,0,0); }
+
+html,body { height: 100%; }
+body {
+  color: #3b3b3b;
+  font-size: 1.618rem;
+}
+
+// Layout Helpers
+.boxed {
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  max-width: 90rem;
+  min-height: 50rem;
+  box-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.15),
+    0 -.5rem 1rem 0 rgba(0,0,0,.033);
+}
+
+// Size & Shape Helpers
+.padded {
+  padding: 2.5rem;
+  &--slightly {
+    padding: 1.618rem;
+  }
+}
+
+// Positional Helpers
+.centered-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  max-width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.vertical-align-helper:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-left: -5px;
+}
+
+.vertical-align-helper>[class*=vertical-align--] {
+  display: inline-block;
+  width: 100%;
+}
+
+// Helpers
+.text {
+  &--centered { text-align: center; }
+}
+
+.vertical-align {
+  &--middle { vertical-align: middle; }
+}

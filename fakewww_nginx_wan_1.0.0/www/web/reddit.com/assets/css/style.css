@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ECECEC;
+}
+
+.topbar-container {
+    height: 92px;
+    background: #FF4C00;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-top: 68px;
+    font-family: 'Helvetica Neue';
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.topbar-item {
+    display: inline;
+    padding: 10px;
+}
+
+.boxes {
+    margin: 12px auto;
+    width: 1400px;
+    height: 92px;
+    background: white;
+    font-family: 'PT Sans';
+}
+
+.topbar-right {
+    display: inline;
+    float: right;
+    padding-right: 6px;
+}
+
+#dash {
+    color: white;
+}
+
+#pointer {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 18px 0px 18px;
+    border-color: #FF4C00 transparent transparent transparent;
+    margin-left: 110px;
+    position: relative;
+}
+
+.icon {
+    max-width: 70px;
+    height: auto;
+    display: block;
+}
+
+#logo {
+    float: left;
+    padding-left: 12px;
+    padding-top: 2px;
+    padding-right: 24px;
+}
+
+#reddit {
+    max-width: 62px;
+    height: auto;
+    margin-top: -6px;
+    padding-left: 4px;
+}
+
+#search {
+    display: inline-flex;
+}
+
+#search-icon {
+    max-width: 22px;
+    padding-left: 12px;
+}
+
+.text {
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 6px;
+}
+
+.submission {
+    color: #A9A9A9;
+    font-size: 12px;
+    margin: 12px 0px;
+}
+
+.comment {
+    color: #A9A9A9;
+    font-weight: bold;
+    font-size: 12px;
+    padding-right: 12px;
+}
+
+a {
+    color: #5F99CF;
+    text-decoration: none;
+}
+
+.imgsource {
+    color: #A9A9A9;
+    display: inline;
+    font-weight: initial;
+    font-size: 12px;
+}
+
+.avatar {
+    max-width: 80px;
+    height: auto;
+    float: left;
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-top: 6px;
+}
+
+#upvote {
+    float: left;
+    max-width: 24px;
+    height: auto;
+}
+
+#downvote {
+    float: left;
+    max-width: 24px;
+    height: auto;
+}
+
+.vote-container {
+    width: 20px;
+    height: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    display: inline-block;
+    float: left;
+}
+
+.counter {
+    font-family: 'Helvetica Neue';
+    color: #797979;
+    font-size: 12px;
+    text-align: center;
+    float: left;
+}
+
+form {
+    display: inline;
+    margin-left: 6px;
+    opacity: 0.8;
+}
+
+input {
+    border: none;
+    border-radius: 15px;
+    height: 18px;
+    width: 180px;
+}

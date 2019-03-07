@@ -1,0 +1,191 @@
+
+.split 
+{
+    height: 90%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.split1
+{
+    height: 5%;
+    width: 100%;
+    position: fixed;
+
+    bottom: 0;
+    left:-20px;
+padding-inline-start: 10px;
+    
+   text-align: center;
+background-color: white;
+border-left-color: white;
+    overflow-x: hidden;
+   
+}
+.twitterIcon-bird
+{
+    overflow:hidden;
+    position: relative;
+    align-items: center;
+    height: 140vh;
+    right: -80vh;
+    top: -20vh;
+    position: absolute;
+}
+.left 
+{
+    align-content: center;
+    overflow: hidden;
+    left: 0;
+    font-size: 18px;
+  color:white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  line-height: 24px;
+  
+    background-color: #1da1f2 ;
+}
+.list
+{
+    line-height: 30px;
+}
+.right 
+{
+    right: 0;
+    background-color: rgb(255, 255, 255);
+}
+.center 
+{
+    position: absolute;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+  }
+  
+ .login
+ {
+     border-radius: 100px;
+    border: #1da1f2 1px solid;
+    margin-left: 250px;
+    background-color: white;
+    color:#1da1f2;
+    font-size: 14px;
+    box-shadow:none;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 20px;
+width: 60px;
+height:42px;
+ }
+ h2{
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 18px;
+    line-height: 24px;
+    margin-top: 48px;
+
+ }
+ .login1
+ {
+    width: 350px;
+    height: 34px;
+    color:#1da1f2;
+        border-radius: 100px;
+    box-shadow: none;
+    border:#1da1f2 1px solid;
+    background-color: white;
+    
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+ }
+.signup
+{
+    color:white;
+width: 350px;
+height: 34px;
+background-color: #1da1f2;
+border: #1da1f2 1px solid;
+    border-radius: 100px;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+ h1{
+    font-size: 27px;
+    line-height: 32px;
+    font-weight: bold;
+    font-family: "Segoe UI",Arial,sans-serif;
+ }
+    .last
+  {
+      position: fixed;
+      background-color: white;
+      bottom:120px;
+      width:100%;
+      border:1px solid black;
+      border-top-color:1px gray;
+  }
+  .bottom
+  {
+      width:100%;
+
+  }
+  .space
+  {
+    padding: 18px;
+  }
+  .image
+  {
+      position: relative;
+  top:13;
+  z-index:-1;
+    }
+    a{
+        color:#aab8c2;
+        font-size:12px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        background: transparent;
+padding: 7px;
+
+    }
+    a:hover{
+        text-decoration: underline;
+
+    }
+    .lastt{
+        color:#aab8c2;
+        font-size:12px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        background: transparent;
+        
+    }
+  .login:hover {
+        background-color: #c3e5f0;
+        
+    }
+.login1:hover{
+        background-color: #c3e5f0;
+            }
+    :hover.signup
+    {
+    background-color: #2361b3;
+    }

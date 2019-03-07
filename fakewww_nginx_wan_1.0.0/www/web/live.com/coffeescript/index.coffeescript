@@ -1,0 +1,166 @@
+$ ->
+  
+  ###------------------------------------------
+  # Functions
+  ------------------------------------------###
+  
+  # Handles unmasking and masking a password
+  # field by toggling the "type" attribute
+  # from password to text and vice versa.
+  unmaskPassword = (target) ->
+    state = $(target).attr "type"
+    
+    if state is "password"
+      $(target).attr "type", "text"
+    else
+      $(target).attr "type", "password"
+  
+  # Handles checking if Caps Lock is on and
+  # displays a warning message if it is.
+  checkForCapsLock = (event) ->
+    s = String.fromCharCode( event.keyCode || event.which )
+    
+    if s.toUpperCase() is s and !event.shiftKey
+      $('.c-card__feedback').addClass('is--in is--warning').html("Your Caps Lock is on. Is that right?")
+    else
+      $('.c-card__feedback').removeClass('is--in')    
+  
+  ###------------------------------------------
+  # Actions
+  ------------------------------------------###
+  
+  # Handles unmasking and masking a given password
+  # field.
+  $('[data-onCheck="unmaskPassword"]').change(()->
+    target = $(this).attr "data-target"
+    unmaskPassword($("[name='#{target}']"))
+  )
+
+
+  ###------------------------------------------
+  # Initialization
+  ------------------------------------------###
+  
+  # Handles whatever needs to go on when the
+  # form submits.
+  loginAttempts = 0
+  
+  # We also need to check for common email
+  # mistakes. Thanks to Mailcheck.js this
+  # is pretty easy
+  domains             = ['gmail.com', 'aol.com', 'live.com', 'wayne.com']
+  secondLevelDomains  = ['hotmail']
+  topLevelDomains     = ["com", "net", "org"]
+
+  $('#emailField').on 'change', () ->
+    $(this).mailcheck
+      domains: domains
+      secondLevelDomains: secondLevelDomains
+      topLevelDomains: topLevelDomains
+      suggested: (element, suggestion) ->
+        $('.c-card__feedback').addClass('is--in is--warning').html("Did you mean #{suggestion.full}?")
+      empty: (element) ->
+        $('.c-card__feedback').removeClass('is--in')
+  
+  $('.has--validator').validate
+    errorClass: "c-feedback-cube__feedback__item is--invalid"
+    validClass: "c-feedback-cube__feedback__item is--valid"
+    errorElement: "div"
+    wrapper: "div"
+    errorPlacement: (label, element) ->
+      $(element).parent().find('.c-feedback-cube__feedback').remove()
+      element.addClass 'has--feedback'
+      label.addClass 'c-feedback-cube__feedback'
+      label.insertAfter $(element).parent().find('.c-feedback-cube')
+    success: (label, element) ->
+      $(element).parent().find('.c-feedback-cube__feedback').remove()
+      $(element).addClass 'has--feedback'
+      label.removeClass 'is--invalid'
+      label.addClass 'is--valid'
+  
+  # Whenever a change happens within the form
+  # check if it's valid and set the disabled
+  # state on the submit button accordingly.
+  $('.has--validator').on "change", "input", () ->
+    if $('.has--validator').valid() and loginAttempts <= 3
+      return $('.has--validator').find('[type="submit"]').removeAttr("disabled")
+    return $('.has--validator').find('[type="submit"]').attr("disabled", "disabled")
+
+  
+  # Also gotta check for Caps Lock
+  $(document).on "capsOn", (event) ->
+    $('.c-card__feedback').addClass('is--in is--warning').html("Your Caps Lock is on. Is that right?")
+  $(document).on "capsOff", (event) ->
+    $('.c-card__feedback').removeClass('is--in') 
+    
+    
+    
+  $(document).capslockstate()
+
+  # Show the "Show Password" checkbox when the user
+  # first focuses in on it
+  $('#passwordField').on "focus", () ->
+    $('#checkboxContainer').removeClass 'is--hidden'
+  
+  $('#passwordField').on "keyup", () ->
+    if $(this).valid() and loginAttempts <= 3
+      return $('.has--validator').find('[type="submit"]').removeAttr("disabled")
+    return $('.has--validator').find('[type="submit"]').attr("disabled", "disabled")  
+  
+  
+  $('input[type="email"]').on "change", () ->
+    if $(this).val() is 'bruce@wayne.com'
+      $(this).next('.c-feedback-cube').addClass('show--bruce')
+    else
+      $(this).next('.c-feedback-cube').removeClass('show--bruce')
+  
+  $(document).on "submit", 'form', () ->
+    loginAttempts++
+  
+  $('.has--validator').submit (event) ->
+    event.preventDefault()
+    cardFeedbackField = $('.c-card__feedback')
+    submitBtnDefaultText = $(this).find('[type="submit"]').val()
+    submitBtnwaitingText = $(this).find('[type="submit"]').attr("data-waiting-text")
+    passwordField = $('#passwordField')
+  
+    $(this)
+    .find('[type="submit"]')
+    .val(submitBtnwaitingText)
+    .addClass('is--unclickable')
+    
+    # Reset the submit button text after a short
+    # period of time.
+    setTimeout =>
+      
+      # Fake a login situation that can fail and
+      # be successful by entering "batcave" as
+      # the password
+      if passwordField.val() is 'batcave'
+        $(document).find('.c-card').toggleClass 'is--signing-in'
+        $(document)
+        .find('.c-card__title')
+        .attr "data-subtitle", "Sign in successful"
+        .text 'Stay sharp today!'
+      else
+        cardFeedbackField.removeClass('is--in is--invalid is--valid is--warning')
+        cardFeedbackField.addClass('is--in is--invalid').text('Not the right password, buddy. Try again.')
+        
+        if loginAttempts >= 1
+          $(document).find('[data-show-after-first-attempt]').removeClass('is--hidden')
+        
+        if loginAttempts >= 3
+          $('.has--validator').find('[type="submit"]').attr("disabled", "disabled")
+          cardFeedbackField.addClass('is--in').text('Too many tries, dude. Come back in 10 minutes.')
+        
+        $(this)
+        .find('[type="submit"]')
+        .val(submitBtnDefaultText)
+        .removeClass('is--unclickable')
+        
+        setTimeout =>
+          cardFeedbackField.removeClass 'is--in'
+        , 5000 
+        
+    , 2000
+    

@@ -1,0 +1,336 @@
+@charset "UTF-8";
+/**
+ *  Helper Functions
+ */
+/**
+ *  Configs
+ */
+/**
+ *  General Styles
+ */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-image: linear-gradient(180deg, #3391FF, #2D79FE);
+  background-attachment: fixed;
+}
+
+a {
+  color: #3391FF;
+  text-decoration: none;
+}
+
+/**
+ *  Card Component
+ */
+.c-card {
+  width: 32rem;
+  margin: 7rem auto;
+  font-family: "Roboto", sans-serif;
+  color: #545454;
+  background-color: #F9FBFB;
+  border-radius: .6rem;
+  /**
+   * States
+   */
+}
+.c-card .c-card__header {
+  padding: 2.8rem;
+  border-radius: .6rem .6rem 0 0;
+  background-color: white;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.c-card .c-card__feedback {
+  margin-top: -34px;
+  padding: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.206rem;
+  transition: margin-top .28s ease-in-out;
+  will-change: margin-top;
+}
+.c-card .c-card__feedback.is--valid {
+  background-color: #2ecc71;
+}
+.c-card .c-card__feedback.is--invalid {
+  background-color: #e74c3c;
+}
+.c-card .c-card__feedback.is--warning {
+  background-color: #f1c40f;
+}
+.c-card .c-card__feedback.is--in {
+  margin-top: 0px;
+}
+.c-card .c-card__body {
+  padding: 2.8rem;
+}
+.c-card .c-card__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  /**
+   * Optionally, if the card title contains a
+   * subtitle, add it above the title.
+   */
+}
+.c-card .c-card__title.has--subtitle-above:before {
+  content: attr(data-subtitle);
+  display: block;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+  font-size: 1.206rem;
+}
+.c-card.is--signing-in {
+  overflow: hidden;
+}
+.c-card.is--signing-in .c-card__body {
+  will-change: padding, height;
+  animation: collapse .32s ease forwards;
+}
+@keyframes collapse {
+  50% {
+    padding-top: 3.5rem;
+  }
+  100% {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+/**
+ *  Form Component
+ */
+.c-form {
+  user-select: none;
+}
+.c-form .c-form__group {
+  /**
+   * Add some spacing between any following
+   * groups of form fields, allowing more
+   * breathing space that aids reading.
+   */
+}
+.c-form .c-form__group ~ .c-form__group {
+  margin-top: 3rem;
+}
+.c-form .c-form__label {
+  display: block;
+  font-size: 1.412rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.c-form .c-form__hint {
+  margin-top: 0.68rem;
+  font-size: 1.206rem;
+  font-weight: 400;
+  color: #777;
+}
+.c-form .c-form__field {
+  display: block;
+  width: 100%;
+  background-color: white;
+  padding: 1.206rem;
+  font-size: 1.412rem;
+  margin: 0.68rem 0;
+  border: 1px solid gainsboro;
+  border-radius: 0.68rem;
+  transition: background-color .28s ease-in-out;
+  will-change: background-color;
+  /**
+   * We also need to handle the many
+   * different field states and
+   * provide appropritate user
+   * feedback.
+   */
+  /**
+   * If the field has a feedback cube
+   * we also need to accomodate for
+   * that situation.
+   */
+}
+.c-form .c-form__field:hover {
+  background-color: #fafafa;
+}
+.c-form .c-form__field:focus {
+  outline: none;
+  background-color: white;
+}
+.c-form .c-form__field.has--feedback.is--invalid {
+  border-bottom-left-radius: 0px;
+}
+.c-form .c-form__field.has--feedback.has--feedback-cube + .c-feedback-cube:before {
+  opacity: 1;
+}
+.c-form .c-form__field.has--feedback-cube {
+  padding-right: 5.5rem;
+  /**
+   * All of the validation states also need
+   * to be handled.
+   */
+}
+.c-form .c-form__field.has--feedback-cube ~ .c-feedback-cube {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0rem;
+  max-height: 5rem;
+  transition: width .28s ease;
+  border-radius: 0 0.68rem 0.68rem 0;
+}
+.c-form .c-form__field.has--feedback-cube:focus + .c-feedback-cube, .c-form .c-form__field.has--feedback-cube.is--invalid + .c-feedback-cube, .c-form .c-form__field.has--feedback-cube.is--valid + .c-feedback-cube {
+  width: 4.5rem;
+}
+.c-form .c-form__field.has--feedback-cube.is--invalid ~ .c-feedback-cube {
+  background-color: #e74c3c;
+}
+.c-form .c-form__field.has--feedback-cube.is--valid ~ .c-feedback-cube {
+  background-color: #2ecc71;
+}
+.c-form .c-form__field.has--feedback-cube.is--valid ~ .c-feedback-cube:before {
+  content: "⌒ ⌒";
+  letter-spacing: 1px;
+  line-height: 2;
+}
+.c-form .c-form__field.has--feedback-cube.is--warning ~ .c-feedback-cube {
+  background-color: #f1c40f;
+}
+.c-form .c-form__checkbox {
+  z-index: 10;
+  margin: 0.68rem 0;
+  display: none;
+}
+.c-form .c-form__checkbox + .c-form__checkbox-text {
+  left: 2px;
+  bottom: 2px;
+  font-size: 1.206rem;
+}
+.c-form .c-form__checkbox + .c-form__checkbox-text:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  top: 3px;
+  border-radius: 3px;
+  background-color: ghostwhite;
+  border: 1px solid silver;
+  box-shadow: inset 0 0 0 2px ghostwhite,  inset 0 0 0 0 silver;
+  transition: box-shadow .14s ease-in-out;
+}
+.c-form .c-form__checkbox:checked + .c-form__checkbox-text:before {
+  box-shadow: inset 0 0 0 2px ghostwhite,  inset 0 0 0 8px silver;
+}
+.c-form .c-form__submit {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0.68rem;
+  background: linear-gradient(#2ecc71, #29b765);
+  transition: box-shadow .28s ease-in-out, background .28s ease-in-out, text-shadow .28s ease-in-out;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.33), 0 1px 1px rgba(0, 0, 0, 0.16);
+  color: white;
+  font-weight: 500;
+  border: 1px solid #26ab5f;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.16);
+}
+.c-form .c-form__submit[disabled] {
+  cursor: not-allowed;
+  opacity: .5;
+  background: gainsboro;
+  border: 0;
+  color: #444;
+  text-shadow: none;
+  box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.33), 0 0 0 rgba(0, 0, 0, 0.16);
+}
+.c-form .c-form__submit:active, .c-form .c-form__submit:focus {
+  outline: none;
+}
+
+/**
+ * Feedback Cube Component
+ */
+.c-feedback-cube {
+  margin: 0;
+  padding: 0;
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  background-color: #ebebeb;
+  background-position: 50px 0;
+  background-repeat: no-repeat;
+  /* Add some eyes */
+}
+.c-feedback-cube:before {
+  content: "● ●";
+  color: white;
+  top: 6px;
+  font-size: 15px;
+  transform: scale(0.8, 1.5);
+  display: block;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+.c-feedback-cube + .c-feedback-cube__feedback > .c-feedback-cube__feedback__item {
+  top: -8px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  font-size: 1.206rem;
+  border-radius: 0 0 6px 6px;
+  cursor: default;
+  border: 1px solid #dbdbdb;
+  /* The small speech indicator */
+}
+.c-feedback-cube + .c-feedback-cube__feedback > .c-feedback-cube__feedback__item:after {
+  content: "▴";
+  width: 10px;
+  height: 10px;
+  color: white;
+  position: absolute;
+  top: -25px;
+  right: 23px;
+  font-size: 35px;
+  transform: scale(1.5, 1);
+}
+.c-feedback-cube + .c-feedback-cube__feedback > .c-feedback-cube__feedback__item.is--invalid {
+  color: #e74c3c;
+  background-color: white;
+}
+.c-feedback-cube.show--bruce {
+  background-image: url("https://lh3.googleusercontent.com/-oAgBTzgFPqk/AAAAAAAAAAI/AAAAAAAAABQ/PIjU1TTwJ5U/s46-c-k-no/photo.jpg") !important;
+  animation: slide-in .28s ease forwards;
+}
+.c-feedback-cube.show--bruce:before {
+  display: none;
+}
+
+@keyframes slide-in {
+  to {
+    background-position: 0px 0px;
+  }
+}
+.is--hidden {
+  display: none !important;
+}
+
+.is--unclickable {
+  pointer-events: none;
+}
+
+.input-hint {
+  position: absolute;
+  bottom: -45px;
+  padding: 0 6px;
+  font-size: 1.412rem;
+  line-height: 1.5;
+  color: white;
+}
