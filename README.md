@@ -24,7 +24,7 @@ On the fake web you need the 3 dockers :
 
 And one more you have to provide, the IPS router. The router are going to be the bridge between your front firewall and the fake web area.
 
-# Need work on :
+# Need to work on :
 - Build ISP router docker
 - Add more website
 - Any suggestion? :)
